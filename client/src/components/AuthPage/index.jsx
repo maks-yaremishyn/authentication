@@ -4,7 +4,7 @@ import useHttp from '../../hooks/useHttp';
 import { AuthContext } from '../../context/AuthContext';
 import StyledAuthPage from './StyledAuthPage';
 import LoginForm from '../LoginForm';
-import Toast from '../ErrorPopUp';
+import Toast from '../Toast';
 
 const loginFormContent = {
     login: {
@@ -36,7 +36,6 @@ const AuthPage = () => {
 
         try {
             const data = await request(`/api/auth/${authType}`, 'POST', { ...form });
-            console.log(data);
 
             if (authType === 'login') {
                 login(data.token, data.userId);
